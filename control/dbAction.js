@@ -2,9 +2,10 @@ const bgPathModel = require('../schema/bgPathModel');
 
 // 查找数据
 async function findData(name) {
-  return bgPathModel.findOne({
+  let _name = name ? {
     name
-  }).exec();
+  } : {};
+  return bgPathModel.findOne(_name).exec();
 }
 
 // 保存数据

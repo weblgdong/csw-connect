@@ -18,11 +18,10 @@ module.exports = router.get('/', async (ctx) => {
   let name = getUrlName(url);
   let exists = await findData(name);
   if (exists) {
-    body = body.url;
+    body = exists.url;
   } else {
     body = await getRequest(url);
     await saveData(name, body);
   }
-
   ctx.body = body;
 });
